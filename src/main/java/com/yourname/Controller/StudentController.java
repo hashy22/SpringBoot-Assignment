@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.awt.*;
+import java.text.ParseException;
 import java.util.Collection;
 @RestController
 @RequestMapping("/students")
@@ -35,12 +36,17 @@ public class StudentController
         studentService.removeStudentById(id);
     }
 
-     // for update student
+    /* for update student
+     note: use http://localhost:8080/students/update/
+     or it will pop error message put method not supported
+    */
     @RequestMapping(value="/update/", method = RequestMethod.PUT,consumes = MediaType.APPLICATION_JSON_VALUE)
     public void updateStudentById(@RequestBody Student student)
     {
         studentService.updateStudent(student);
     }
+
+
 
     //for insertion of student
     @RequestMapping(value="/insert", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
